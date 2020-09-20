@@ -7,7 +7,7 @@ const { v4: uuid4 } = require('uuid');
 let storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
     filename: (req, file, cb) => {
-        const uniqueName = `${Date.now()} - ${Math.round(Math.random() * 1E9)}${path.extname(file, originalname)}`;
+        const uniqueName = `${Date.now()} - ${Math.round(Math.random() * 1E9)}${path.extname(file.originalname)}`;
         cb(null, uniqueName);
     }
 })
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
         //Validate request
 
         if (!req.file) {
-            return req.json({ error: "All fields are required" });
+            return res.json({ error: "All fields are required" });
         }
 
         if (err) {
@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
 
         const response = await file.save();
 
-        return res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` })
+        return res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
     })
 
     //Response -> link
