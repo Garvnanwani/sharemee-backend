@@ -15,7 +15,7 @@ connectDB();
 // CORS SETUP
 
 const corsOptions = {
-  origin: ['https://sharemee.netlify.app/','https://sharemee.netlify.app'], 
+  origin: process.env.ACCESS_CLIENTS,
   optionsSuccessStatus: 200
 }
 
