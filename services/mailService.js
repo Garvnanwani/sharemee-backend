@@ -12,7 +12,7 @@ async function sendMail({ from, to, subject, text, html }) {
     });
 
     let info = await transporter.sendMail({
-        from: `Shareme <${from}>`, // sender address
+        from: `sharemeee <${from}>`, // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
         text: text, // plain text body

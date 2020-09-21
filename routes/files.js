@@ -46,7 +46,7 @@ router.post('/send', async (req, res) => {
         sendMail({
             from: emailFrom,
             to: emailTo,
-            subject: 'Shareme file sharing',
+            subject: 'sharemee file sharing',
             text: `${emailFrom} shared a file with you.`,
             html: require('../services/emailTemplate')({
                 emailFrom,
