@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const cors = require('cors');
+// const cors = require('cors');
 const PORT = process.env.PORT || 3141;
 
 app.use(express.static('public'));
@@ -14,12 +14,12 @@ connectDB();
 
 // CORS SETUP
 
-const corsOptions = {
-  origin: process.env.ACCESS_CLIENTS,
-  optionsSuccessStatus: 200
-}
+// const corsOptions = {
+//   origin: process.env.ACCESS_CLIENTS,
+//   optionsSuccessStatus: 200
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 //Templates
 
