@@ -19,9 +19,9 @@ router.post('/', (req, res) => {
         if (err) {
             return res.status(500).send({ error: err.message });
         }
-        
-        const uploaded_file = req.file[0];
-        
+
+        const uploaded_file = req.files[0];
+
         const file = new File({
             filename: uploaded_file.filename,
             uuid: uuidv4(),
@@ -38,7 +38,7 @@ router.post('/send', async (req, res) => {
     if (!uuid || !emailTo || !emailFrom) {
         return res.status(422).send({ error: 'All fields are required except expiry.' });
     }
-    // Get data from db 
+    // Get data from db
     try {
         const file = await File.findOne({ uuid: uuid });
         file.sender = emailFrom;
