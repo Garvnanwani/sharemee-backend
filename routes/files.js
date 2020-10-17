@@ -19,11 +19,14 @@ router.post('/', (req, res) => {
         if (err) {
             return res.status(500).send({ error: err.message });
         }
+        
+        const uploaded_file = req.file[0];
+        
         const file = new File({
-            filename: req.file.filename,
+            filename: uploaded_file.filename,
             uuid: uuidv4(),
-            path: req.file.path,
-            size: req.file.size
+            path: uploaded_file.path,
+            size: uploaded_file.size
         });
         const response = await file.save();
         res.json({ file: `${process.env.APP_BASE_URL}/files/${response.uuid}` });
